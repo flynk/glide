@@ -2675,7 +2675,11 @@
                 steps = -steps;
               }
 
-              Components.Run.make(Components.Direction.resolve('>' + steps));
+              if (Glide.index + settings.perTouch > Components.Html.slides.length - 1) {
+                Components.Run.make(Components.Direction.resolve('<<'));
+              } else {
+                Components.Run.make(Components.Direction.resolve('>' + steps));
+              }
             } else {
               // While swipe don't reach distance apply previous transform.
               Components.Move.make();
