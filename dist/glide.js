@@ -1,6 +1,6 @@
 /*!
  * Glide.js v3.2.4
- * (c) 2013-2018 Jędrzej Chałubek <jedrzej.chalubek@gmail.com> (http://jedrzejchalubek.com/)
+ * (c) 2013-2019 Jędrzej Chałubek <jedrzej.chalubek@gmail.com> (http://jedrzejchalubek.com/)
  * Released under the MIT License.
  */
 
@@ -2653,18 +2653,22 @@
             if (swipeDistance > threshold && swipeDeg < settings.touchAngle) {
               // While swipe is positive and greater than threshold move backward.
               if (settings.perTouch) {
-                steps = Math.min(steps, toInt(settings.perTouch));
+                steps = toInt(settings.perTouch);
               }
 
               if (Components.Direction.is('rtl')) {
                 steps = -steps;
               }
 
-              Components.Run.make(Components.Direction.resolve('<' + steps));
+              if (Glide.index - steps >= 0) {
+                Components.Run.make(Components.Direction.resolve('<' + steps));
+              } else {
+                Components.Run.make(Components.Direction.resolve('=0'));
+              }
             } else if (swipeDistance < -threshold && swipeDeg < settings.touchAngle) {
               // While swipe is negative and lower than negative threshold move forward.
               if (settings.perTouch) {
-                steps = Math.max(steps, -toInt(settings.perTouch));
+                steps = -toInt(settings.perTouch);
               }
 
               if (Components.Direction.is('rtl')) {
