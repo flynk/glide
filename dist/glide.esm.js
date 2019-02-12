@@ -3233,9 +3233,8 @@ function Controls (Glide, Components, Events) {
      * @return {Void}
      */
     click: function click(event) {
-      event.preventDefault();
-
       // Disable click event
+      // event.preventDefault();
       // Components.Run.make(Components.Direction.resolve(event.currentTarget.getAttribute('data-glide-dir')))
     }
   };
