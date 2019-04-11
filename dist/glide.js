@@ -3015,7 +3015,7 @@
             this.items[i].setAttribute('data-href', this.items[i].getAttribute('href'));
 
             /* Prevent link color change when swipe */
-            // this.items[i].removeAttribute('href')
+            this.items[i].setAttribute('href', 'javascript:void(0)');
           }
 
           detached = true;
